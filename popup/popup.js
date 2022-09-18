@@ -2,6 +2,8 @@
 
 	var buttonWizz = document.getElementById("wizz")
 	var buttonMehdi = document.getElementById("mehdify")
+	var buttonCage = document.getElementById("cagify")
+	var buttonRain = document.getElementById("rain")
 
 	buttonWizz.addEventListener("click", () => {
 		console.log("wizz")
@@ -23,5 +25,23 @@
 		})
 	});
 
+	buttonCage.addEventListener("click", () => {
+		console.log("cagify")
+		browser.tabs.query({active: true, currentWindow: true})
+		.then((tabs) => {
+			browser.tabs.sendMessage(tabs[0].id, {
+				command: "cagify",
+			})
+		})
+	});
 
+	buttonRain.addEventListener("click", () => {
+		console.log("rain")
+		browser.tabs.query({active: true, currentWindow: true})
+		.then((tabs) => {
+			browser.tabs.sendMessage(tabs[0].id, {
+				command: "rain",
+			})
+		})
+	});
 })()

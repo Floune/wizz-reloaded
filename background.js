@@ -54,6 +54,64 @@ function mehdify() {
 
 }
 
+function cagify() {
+	let index = Math.random() * (8 - 1) + 1
+	var images = document.getElementsByTagName('img');
+	for(var i = 0; i < images.length; i++)
+	{
+		let index = Math.random() * (8 - 1) + 1
+		var img = images[i];
+		img.src = ""
+		img.src = browser.runtime.getURL("assets/cage/" + Math.floor(index) + ".jpg");
+		
+	}	
+}
+
+function rain() {
+const rainContainer = document.body;
+
+// background Colors for the raindrop
+const background = [
+"linear-gradient(transparent, aqua)",
+"linear-gradient(transparent, red)",
+"linear-gradient(transparent, limegreen)",
+"linear-gradient(transparent, white)",
+"linear-gradient(transparent, yellow)"
+];
+
+const amount = 100; // amount of raindops
+let i = 0;
+
+// Looping and creating the raindrop then adding to the rainContainer
+while (i < amount) {
+  //  Creating and Element
+  const drop = document.createElement("i");
+
+  //   CSS Properties for raindrop
+  const raindropProperties = {
+  	width: Math.random() * 5 + "px",
+  	positionX: Math.floor(Math.random() * window.innerWidth) + "px",
+  	delay: Math.random() * -20 + "s",
+  	duration: Math.random() * 5 + "s",
+  	bg: background[Math.floor(Math.random() * background.length)],
+  	opacity: Math.random() + 0.2
+  };
+
+  //   Setting Styles for raindrop
+  drop.style.width = raindropProperties.width;
+  drop.style.left = raindropProperties.positionX;
+  drop.style.animationDelay = raindropProperties.delay;
+  drop.style.animationDuration = raindropProperties.duration;
+  drop.style.background = raindropProperties.bg;
+  drop.style.opacity = raindropProperties.opacity;
+
+  //   Appending the raindrop in the raindrop container
+  rainContainer.appendChild(drop);
+  i++;
+}
+
+}
+
 webSocket.onmessage = (event) => {
 	let command = JSON.parse(event.data)
 	if (command == "wizz") {
@@ -63,5 +121,13 @@ webSocket.onmessage = (event) => {
 	if (command == "mehdify") {
 		console.log("okmehdi")
 		mehdify()
+	}
+	if (command == "cagify") {
+		console.log("oknico")
+		cagify()
+	}
+	if (command === "rain") {
+		console.log("rain")
+		rain()
 	}
 }
