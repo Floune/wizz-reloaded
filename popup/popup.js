@@ -1,23 +1,27 @@
-(function buildPopup() {
+(function listeners() {
 
-	var button = document.createElement('button');
-	
-	button.innerHTML = 'WIZZZ';
-	button.style.backgroundColor = "pink"
-	button.style.borderRadius = "5px"
-	button.style.paddind = "7px"
-	button.style.width = "100%"
-	button.style.height = "100%"
+	var buttonWizz = document.getElementById("wizz")
+	var buttonMehdi = document.getElementById("mehdify")
 
-	button.onclick = function(){
+	buttonWizz.addEventListener("click", () => {
+		console.log("wizz")
 		browser.tabs.query({active: true, currentWindow: true})
 		.then((tabs) => {
 			browser.tabs.sendMessage(tabs[0].id, {
 				command: "wizz",
 			})
 		})
-	};
-	document.body.appendChild(button);
+	});
+
+	buttonMehdi.addEventListener("click", () => {
+		console.log("mehdify")
+		browser.tabs.query({active: true, currentWindow: true})
+		.then((tabs) => {
+			browser.tabs.sendMessage(tabs[0].id, {
+				command: "mehdify",
+			})
+		})
+	});
 
 
 })()

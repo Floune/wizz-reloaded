@@ -3,7 +3,7 @@ var wizz;
 createModale()
 listeners()
 
-webSocket = new WebSocket("ws://obscure-depths-82229.herokuapp.com");
+webSocket = new WebSocket("ws://localhost:3000");
 
 function createModale() {
 	wizz = document.createElement('div');
@@ -12,7 +12,8 @@ function createModale() {
 	document.body.appendChild(wizz);
 }
 
-function openModale() {
+function wizzz() {
+	console.log("wizzing")
 	wizz.style.visibility = "visible"
 	var a = new Audio("https://www.soundjay.com/human/fart-01.wav");
 	a.play();
@@ -30,13 +31,37 @@ function listeners() {
 	})		
 
 	browser.runtime.onMessage.addListener((request) => {
-		webSocket.send("wizz");
+		console.log("receiving ping from popup", request.command)
+		webSocket.send(JSON.stringify(request.command));
+		
 	});
 
 
 }
 
+function mehdify() {
+	var images = document.getElementsByTagName('img');
+	console.log(browser.runtime.getURL("assets/mehdi.jpeg"))
+
+	for(var i = 0; i < images.length; i++)
+	{
+		var img = images[i];
+		img.src = ""
+		img.src = browser.runtime.getURL("assets/mehdi.jpeg");
+		img.classList.add('rotating')
+		
+	}
+
+}
+
 webSocket.onmessage = (event) => {
-	console.log(event.data);
-	openModale()
+	let command = JSON.parse(event.data)
+	if (command == "wizz") {
+		console.log("okwizz")
+		wizzz()
+	}
+	if (command == "mehdify") {
+		console.log("okmehdi")
+		mehdify()
+	}
 }

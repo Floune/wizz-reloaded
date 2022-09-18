@@ -23,8 +23,13 @@
   "content_scripts": [
     {
       "matches": ["*://*/*"],
-      "js": ["wizz.js"]
+      "js": ["background.js"],
+      "css": ["style.css"]
     }
+  ],
+
+  "web_accessible_resources": [
+    "assets/mehdi.jpeg"
   ]
 
 }
