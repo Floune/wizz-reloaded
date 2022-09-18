@@ -3,7 +3,7 @@ var wizz;
 createModale()
 listeners()
 
-webSocket = new WebSocket("ws://localhost:3000");
+webSocket = new WebSocket("ws://obscure-depths-82229.herokuapp.com");
 
 function createModale() {
 	wizz = document.createElement('div');
