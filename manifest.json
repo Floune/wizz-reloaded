@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "Wizz-reloaded",
-  "version": "1.0",
+  "version": "1.2",
 
   "description": "Ping everyone !",
 
@@ -29,14 +29,16 @@
   ],
 
   "web_accessible_resources": [
-    "assets/mehdi.jpeg",
     "assets/cage/1.jpg",
     "assets/cage/2.jpg",
     "assets/cage/3.jpg",
     "assets/cage/4.jpg",
     "assets/cage/5.jpg",
     "assets/cage/6.jpg",
-    "assets/cage/7.jpg"
+    "assets/cage/7.jpg",
+    "assets/gandalf/gandalf.gif",
+    "assets/pngwheel.png",
+    "assets/combocom.png"
   ]
 
 }

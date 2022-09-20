@@ -1,47 +1,15 @@
 (function listeners() {
 
-	var buttonWizz = document.getElementById("wizz")
-	var buttonMehdi = document.getElementById("mehdify")
-	var buttonCage = document.getElementById("cagify")
-	var buttonRain = document.getElementById("rain")
-
-	buttonWizz.addEventListener("click", () => {
-		console.log("wizz")
-		browser.tabs.query({active: true, currentWindow: true})
-		.then((tabs) => {
-			browser.tabs.sendMessage(tabs[0].id, {
-				command: "wizz",
+	document.querySelectorAll('.btn').forEach(b => {
+		b.addEventListener("click", e => {
+			console.log(e.target.getAttribute("data-action"))
+			browser.tabs.query({active: true, currentWindow: true})
+			.then((tabs) => {
+				browser.tabs.sendMessage(tabs[0].id, {
+					command: e.target.getAttribute("data-action"),
+				})
 			})
 		})
-	});
+	})
 
-	buttonMehdi.addEventListener("click", () => {
-		console.log("mehdify")
-		browser.tabs.query({active: true, currentWindow: true})
-		.then((tabs) => {
-			browser.tabs.sendMessage(tabs[0].id, {
-				command: "mehdify",
-			})
-		})
-	});
-
-	buttonCage.addEventListener("click", () => {
-		console.log("cagify")
-		browser.tabs.query({active: true, currentWindow: true})
-		.then((tabs) => {
-			browser.tabs.sendMessage(tabs[0].id, {
-				command: "cagify",
-			})
-		})
-	});
-
-	buttonRain.addEventListener("click", () => {
-		console.log("rain")
-		browser.tabs.query({active: true, currentWindow: true})
-		.then((tabs) => {
-			browser.tabs.sendMessage(tabs[0].id, {
-				command: "rain",
-			})
-		})
-	});
 })()
